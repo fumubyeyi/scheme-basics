@@ -1,0 +1,18 @@
+#lang scheme
+(define (powerset s)
+  (if (null? s)
+      '(())
+      (let ((aux (powerset (cdr s))))
+          (append (insert (car s) aux)
+                   aux)
+             )
+      )
+  )
+(define (insert a lst)
+  (if (null? lst) '()
+      (cons (cons a (car lst))
+              (insert a (cdr lst)))
+      )
+  )
+                      
+(display (powerset '(0 1 2 3)))
